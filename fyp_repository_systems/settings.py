@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path
+import dj_database_url
 import django_heroku
+
 
 from django.conf.global_settings import AUTH_USER_MODEL, AUTHENTICATION_BACKENDS
 
