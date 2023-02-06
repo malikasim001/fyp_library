@@ -1,0 +1,1 @@
+web: gunicorn fyp_repository_systems.wsgi

@@ -389,9 +389,8 @@ def N_Gram(request):
     import math
     import docx
     from nltk.corpus import stopwords
+
     # doc file input in python
-    project = Projects.objects.all()
-    report = request.FILES['report']
     def getText(filename):
         doc = docx.Document(filename)
         fullText = []
@@ -401,18 +400,16 @@ def N_Gram(request):
 
     # input filepath where all assignment belong
     docFiles = []
-    docFiles1=[]
-    for filename in os.listdir("D:\\fyp_repository_system\\fyp_repository_systems\media"):
+    reportt = request.FILES['reportfile']
+    k=1
+    for filename in os.listdir("D:\\fyp_repository_system\\fyp_repository_systems"):
         if filename.endswith('.docx'):
             filename = getText(filename)
-            filename1=getText(report)
-            docFiles.append(filename)#files from media folder
-            docFiles1.append(filename1)#file which is uploaded from student
+            docFiles.append(filename)
     docFiles.sort(key=str.lower)
-    docFiles1.sort(key=str.lower)
     print(len(docFiles))
-    print(len(docFiles1))
-    # building vocabulary of a the documents
+
+    # building vocabulary of a  the documents
 
     def build_lexicon(corpus):
         lexicon = set()
@@ -421,7 +418,7 @@ def N_Gram(request):
             word_token = [word for word in doc.split()]
             lower_word_list = [i.lower() for i in word_token]
 
-            # stemming
+            # stemming removing of COMMA FULLSTOP
             porter = nltk.PorterStemmer()
             stemmed_word = [porter.stem(t) for t in lower_word_list]
 
@@ -433,7 +430,7 @@ def N_Gram(request):
 
     # all word set
     vocabulary = build_lexicon(docFiles)
-    vocabulary1 = build_lexicon(docFiles1)
+
     def tf(term, document):
         return freq(term, document)
 
@@ -442,24 +439,14 @@ def N_Gram(request):
 
     doc_term_matrix = []
     print('\n Our Vocabulary vector is [' + ','.join(list(vocabulary)) + ']')
-    print('\n Our Vocabulary vector is [' + ','.join(list(vocabulary1)) + ']')
     for doc in docFiles:
         tf_vector = [tf(word, doc) for word in vocabulary]
         tf_vector_string = ','.join(format(freq, 'd') for freq in tf_vector)
         print('\n the tf vector for document %d is [%s]' % ((docFiles.index(doc) + 1), tf_vector_string))
         doc_term_matrix.append(tf_vector)
-    print('\n ll combined here is our master document term matrix:')
-    print(doc_term_matrix)
-    doc1_term_matrix = []
-    for doc in docFiles1:
-        tf_vector = [tf(word, doc) for word in vocabulary1]
-        tf_vector_string = ','.join(format(freq, 'd') for freq in tf_vector)
-        print('\n the tf vector for document %d is [%s]' % ((docFiles1.index(doc) + 1), tf_vector_string))
-        doc1_term_matrix.append(tf_vector)
 
     print('\n ll combined here is our master document term matrix:')
-    print(doc1_term_matrix)
-    #return HttpResponse(doc1_term_matrix)
+    print(doc_term_matrix)
 
     # Now every document is in the same feature space
     # Normalizing vectors to l2 norm
@@ -470,18 +457,13 @@ def N_Gram(request):
         return [(e1 / math.sqrt(denom)) for e1 in vec]
 
     doc_term_martix_l2 = []
-    doc1_term_martix_l2 = []
     for vec in doc_term_matrix:
         doc_term_martix_l2.append(l2_normalizer(vec))
 
-    for vec in doc1_term_matrix:
-        doc1_term_martix_l2.append(l2_normalizer(vec))
     print('\nA regular old document term martix:  ')
     print(np.matrix(doc_term_matrix))
-    print(np.matrix(doc1_term_matrix))
     print('\nA document term matrix with row wise l2 norms of 1:  ')
     print(np.matrix(doc_term_martix_l2))
-    print(np.matrix(doc1_term_martix_l2))
 
     def numDocsContaining(word, doclist):
         doccount = 0
@@ -496,13 +478,11 @@ def N_Gram(request):
         return np.log(n_samples / 1 + df)
 
     my_idf_vector = [idf(word, docFiles) for word in vocabulary]
+
     print('our vocabuary vector is[ ' + ','.join(list(vocabulary)) + ']')
-    my_idf_vector1 = [idf(word, docFiles1) for word in vocabulary1]
-    print('our vocabuary vector is[ ' + ','.join(list(vocabulary1)) + ']')
 
     print('\nThe inverse document frequency vectir is [' + ','.join(format(freq('f') for freq in my_idf_vector)))
-    print('\nThe inverse document frequency vectir is [' + ','.join(format(freq('f') for freq in my_idf_vector1)))
-    #return HttpResponse(my_idf_vector1)
+
     def build_idf_matrix(idf_vector):
         idf_mat = np.zeros((len(idf_vector), len(idf_vector)))
         np.fill_diagonal(idf_mat, idf_vector)
@@ -511,37 +491,26 @@ def N_Gram(request):
     my_idf_matrix = build_idf_matrix(my_idf_vector)
     print('\nIdf matrix is:')
     print(my_idf_matrix)
-    my_idf_matrix1 = build_idf_matrix(my_idf_vector1)
-    print('\nIdf matrix is:')
-    print(my_idf_matrix1)
 
     doc_term_matrix_tfidf = []
-    doc1_term_matrix_tfidf = []
+
     # performing tfidf matrix multiplication
-       #is jaga kuch changing krni pry gi be in mind for report file matrix
+
     for tf_vector in doc_term_matrix:
         doc_term_matrix_tfidf.append(np.dot(tf_vector, my_idf_matrix))
-        #return HttpResponse(doc_term_matrix_tfidf)
-    for tf_vector in doc1_term_matrix:
-        doc1_term_matrix_tfidf.append(np.dot(tf_vector, my_idf_matrix1))
-        #return HttpResponse(doc_term_matrix_tfidf)
+
     # normalising
     doc_term_matrix_tfidf_l2 = []
-    doc1_term_matrix_tfidf_l2 = []
     for tf_vector in doc_term_matrix_tfidf:
         doc_term_matrix_tfidf_l2.append(l2_normalizer(tf_vector))
+
     print(vocabulary)
     print(np.matrix(doc_term_matrix_tfidf_l2))
-    for tf_vector in doc1_term_matrix_tfidf:
-        doc1_term_matrix_tfidf_l2.append(l2_normalizer(tf_vector))
-    print(vocabulary)
-    print(np.matrix(doc1_term_matrix_tfidf_l2))
-    #return HttpResponse(np.matrix(doc1_term_matrix_tfidf_l2))
+
     # cosine distance and angle between all the documents pairwisely
-    for i in range(len(docFiles1)):
-        for j in range(len(docFiles)):
-            result_nltk = nltk.cluster.util.cosine_distance(doc1_term_matrix_tfidf_l2[i], doc_term_matrix_tfidf_l2[j])
-            return HttpResponse("HELLO")
+    for i in range(len(docFiles)):
+        for j in range(i + 1, len(docFiles)):
+            result_nltk = nltk.cluster.util.cosine_distance(doc_term_matrix_tfidf_l2[i], doc_term_matrix_tfidf_l2[j])
             print('\n cosine Distance btw doc %d and doc %d:' % (i, j))
             print(result_nltk)
             cos_sin = 1 - result_nltk

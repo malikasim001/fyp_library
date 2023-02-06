@@ -58,9 +58,9 @@
                             <li class="mt-3 {% if request.path == fyp_list %} nav-active {% endif %}">
                                 <a href="{{fyp_list}}" class="waves-effect "><i class="mdi mdi-file-multiple"></i><span> Past Final Year Projects </span></a>
                             </li>
-                            {% url 'upload_plag' as upload_plag %}
-                            <li class="mt-3 {% if request.path == upload_plag %} nav-active {% endif %}">
-                                <a href="{{upload_plag}}" class="waves-effect"><i class="mdi mdi-file-multiple"></i><span>Check Plagiarism </span></a>
+                            {% url 'upload_reps' as upload_reps %}
+                            <li class="mt-3 {% if request.path == upload_reps %} nav-active {% endif %}">
+                                <a href="{{upload_reps}}" class="waves-effect"><i class="mdi mdi-file-multiple"></i><span>Check Plagiarism </span></a>
                             </li>
                         </ul>
                     </div>

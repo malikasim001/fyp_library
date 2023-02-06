@@ -595,6 +595,7 @@ body.fixed-left .side-menu.left {
 
 .sidebar-inner {
   height: 100%;
+  background-color:white!important;
 }
 
 .search-wrap {

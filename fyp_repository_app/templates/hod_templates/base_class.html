@@ -50,64 +50,61 @@
                     <div id="sidebar-menu">
                         <ul class="p-2">
                              {% url 'add_admin' as add_admin %}
-                             <li class="mt-3 {% if request.path == add_admin %} nav-active {% endif %}">
+                             <li class="mt-1 {% if request.path == add_admin %} nav-active {% endif %}">
                                 <a href="{{add_admin}}" class="waves-effect"><i class="mdi mdi-file-multiple"></i><span>Add Admin </span></a>
                             </li>
 
                             {% url 'manage_admin' as manage_admin %}
-                             <li class="mt-3 {% if request.path == manage_admin %} nav-active {% endif %}">
+                             <li class="mt-1 {% if request.path == manage_admin %} nav-active {% endif %}">
                                 <a href="{{manage_admin}}" class="waves-effect"><i class="mdi mdi-file-multiple"></i><span>Manage Admin </span></a>
                             </li>
 
                             {% url 'addsupervisor' as addsupervisor %}
-                            <li class="mt-3 {% if request.path == addsupervisor %} nav-active {% endif %}">
+                            <li class="mt-1 {% if request.path == addsupervisor %} nav-active {% endif %}">
                                 <a href="{{addsupervisor}}" class="waves-effect"><i class="mdi mdi-file-multiple"></i><span>Add Supervisor </span></a>
                             </li>
 
                             {% url 'manage_supervisor' as manage_supervisor %}
-                            <li class="mt-3 {% if request.path == manage_supervisor %} nav-active {% endif %}">
+                            <li class="mt-1 {% if request.path == manage_supervisor %} nav-active {% endif %}">
                                 <a href="{{manage_supervisor}}" class="waves-effect"><i class="mdi mdi-file-multiple"></i><span>Manage Supervisor </span></a>
                             </li>
 
                             {% url 'addstudent' as addstudent %}
-                            <li class="mt-3 {% if request.path == addstudent %} nav-active {% endif %}">
+                            <li class="mt-1 {% if request.path == addstudent %} nav-active {% endif %}">
                                 <a href="{{addstudent}}" class="waves-effect"><i class="mdi mdi-file-multiple"></i><span>Add Student </span></a>
                             </li>
 
                             {% url 'manage_student' as manage_student %}
                             {% url 'edit_student' student_id=id as edit_student %}
-                            <li class="mt-3 {% if request.path == manage_student %} nav-active {% endif %}  {% if request.path == edit_student %} nav-active {% endif %}">
+                            <li class="mt-1 {% if request.path == manage_student %} nav-active {% endif %}  {% if request.path == edit_student %} nav-active {% endif %}">
                                 <a href="{% url 'manage_student'%}" class="waves-effect"><i class="mdi mdi-file-multiple"></i><span>Manage Student </span></a>
                             </li>
 
                             {% url 'adddepartment' as adddepartment %}
-                            <li class="mt-3 {% if request.path == adddepartment %} nav-active {% endif %}">
+                            <li class="mt-1 {% if request.path == adddepartment %} nav-active {% endif %}">
                                 <a href="{{adddepartment}}" class="waves-effect"><i class="mdi mdi-file-multiple"></i><span><i>Add Department</i> </span></a>
                                 <!-- <a href="/" class="waves-effect"><i class="mdi mdi-file-multiple"></i><span> Current FYP </span></a> -->
                             </li>
                             {% url 'manage_department' as manage_department %}
                              {% url 'edit_student' student_id=id as edit_student %}
-                             <li class="mt-3 {% if request.path == manage_department %} nav-active {% endif %} {% if request.path == edit_student %} nav-active {% endif %}">
+                             <li class="mt-1 {% if request.path == manage_department %} nav-active {% endif %} {% if request.path == edit_student %} nav-active {% endif %}">
                                 <a href="{{manage_department}}" class="waves-effect"><i class="mdi mdi-file-multiple"></i><span><i>Manage Department</i> </span></a>
                                 <!-- <a href="/" class="waves-effect"><i class="mdi mdi-file-multiple"></i><span> Current FYP </span></a> -->
                             </li>
                             {% url 'add_fyp' as add_fyp %}
-                             <li class="mt-3 {% if request.path == add_fyp %} nav-active {% endif %}">
+                             <li class="mt-1 {% if request.path == add_fyp %} nav-active {% endif %}">
                                 <a href="{{add_fyp}}" class="waves-effect"><i class="mdi mdi-file-multiple"></i><span><i>Add Fyp</i> </span></a>
                                 <!-- <a href="/" class="waves-effect"><i class="mdi mdi-file-multiple"></i><span> Current FYP </span></a> -->
                             </li>
                             {% url 'pastfyp' as pastfyp %}
-                            <li class="mt-3 {% if request.path == pastfyp %} nav-active {% endif %}">
+                            <li class="mt-1 {% if request.path == pastfyp %} nav-active {% endif %}">
                                 <a href="{{pastfyp}}" class="waves-effect "><i class="mdi mdi-file-multiple"></i><span> Past Final Year Projects </span></a>
                             </li>
 
                             {% url 'upload_report' as upload_report %}
-                            <li class="mt-3 {% if request.path == upload_report %} nav-active {% endif %}">
+                            <li class="mt-1 {% if request.path == upload_report %} nav-active {% endif %}">
                                 <a href="{{upload_report}}" class="waves-effect "><i class="mdi mdi-file-multiple"></i><span>Check Plagiarism </span></a>
                             </li>
-
-
-
                         </ul>
                     </div>
                     <div class="clearfix"></div>

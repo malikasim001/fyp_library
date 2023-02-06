@@ -78,6 +78,7 @@ urlpatterns = [
     path('fyp_added',supervisors_views.Show_Fyp,name="fyp_added"),
     path('save_fypp',supervisors_views.Save_FYP,name="save_fypp"),
     path('fyp_list',supervisors_views.Display_Fyp,name="fyp_list"),
+    path('upload_reps',supervisors_views.Upload_Reports,name="upload_reps"),
     path('upload_plag',supervisors_views.Upload_Plag,name="upload_plag"),
     path('profile_sup',supervisors_views.Profile_Supervisor,name="profile_sup"),
     path('logout_sup',supervisors_views.LogOut,name="logout_sup"),
@@ -90,5 +91,6 @@ urlpatterns = [
     path('upload_report_s',student_views.UploadReport,name="upload_report_s"),
     path('show_profiles', student_views.ShowProfile, name="show_profiles"),
     path('Logout_stud', student_views.LogOUt, name="Logout_stud"),
+    path('plag_stud', student_views.Plag_Student, name="plag_stud"),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
 #print(static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT))
