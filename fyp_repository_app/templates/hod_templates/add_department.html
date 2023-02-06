@@ -1,0 +1,91 @@
+{% extends 'hod_templates/base_class.html' %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+        <title>{% block title %}
+            Add Department
+          {% endblock title %}</title>
+        {% load static %}
+        <meta content="Admin Dashboard" name="description" />
+        <meta content="Themesbrand" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!-- App Icons -->
+        <link rel="shortcut icon" href="{% static './images/custlogo_3.png'%}">
+
+        <!-- DataTables -->
+        <link href="{% static './plugins/datatables/dataTables.bootstrap4.min.css'%}" rel="stylesheet" type="text/css" />
+        <link href="{% static './plugins/datatables/buttons.bootstrap4.min.css'%}" rel="stylesheet" type="text/css" />
+        <!-- Responsive datatable examples -->
+        <link href="{%static './plugins/datatables/responsive.bootstrap4.min.css'%}" rel="stylesheet" type="text/css" />
+        <!-- Basic Css files -->
+        <link href="{% static './css/bootstrap.min.css'%}" rel="stylesheet" type="text/css">
+        <link href="{% static './css/icons.css'%}" rel="stylesheet" type="text/css">
+        <link href="{% static './css/style.css'%}" rel="stylesheet" type="text/css">
+
+    </head>
+    {% block body %}
+    <form class="" action="/department_save" method="post">
+          {% csrf_token %}
+       <div class="card m-b-20">
+
+           <div class="card-body">
+
+               <h4 class="mt-0 bold">Add Department</h4>
+
+
+                   <div class="form-group">
+                        <i class=""></i>
+                       <label><h6>Department Name</h6></label>
+                       <input type="text" class="form-control" name="department_id" required placeholder="Please Enter Department Name"/>
+                   </div>
+
+
+           </div>
+
+       </div>
+       <div class="col-12 text-right mb-3">
+           <button type="submit"  class="btn btn-pink waves-effect waves-light">Submit</button>
+
+       </div>
+   </form>
+    {% endblock body %}
+
+</html>
+     <!-- jQuery  -->
+     <script src="{%static './js/jquery.min.js'%}"></script>
+     <script src="{%static './js/bootstrap.bundle.min.js'%}"></script>
+     <script src="{%static './js/modernizr.min.js'%}"></script>
+     <script src="{%static './js/jquery.slimscroll.js'%}"></script>
+     <script src="{%static './js/waves.js'%}"></script>
+     <script src="{%static './js/jquery.nicescroll.js'%}"></script>
+     <script src="{%static './js/jquery.scrollTo.min.js'%}"></script>
+
+
+     <!-- Required datatable js -->
+     <script src= "{% static './plugins/datatables/jquery.dataTables.min.js'%}"></script>
+     <script src="{% static './plugins/datatables/dataTables.bootstrap4.min.js'%}"></script>
+     <!-- Buttons examples -->
+     <script src="{% static './plugins/datatables/dataTables.buttons.min.js'%}"></script>
+     <script src="{% static './plugins/datatables/buttons.bootstrap4.min.js'%}"></script>
+     <script src="{% static './plugins/datatables/jszip.min.js'%}"></script>
+
+     <script src= "{% static './plugins/datatables/pdfmake.min.js'%}"></script>
+     <script src="{% static './plugins/datatables/vfs_fonts.js'%}"></script>
+     <script src=  "{% static './plugins/datatables/buttons.html5.min.js'%}"></script>
+     <script src=  "{% static './plugins/datatables/buttons.print.min.js'%}"></script>
+     <script src=  "{% static './plugins/datatables/buttons.colVis.min.js'%}"></script>
+     <!-- Responsive examples -->
+     <script src=  "{% static './plugins/datatables/dataTables.responsive.min.js'%}"></script>
+     <script src=  "{% static './plugins/datatables/responsive.bootstrap4.min.js'%}"></script>
+
+     <!-- Datatable init js -->
+     <script src=  "{% static './pages/datatables.init.js'%}"></script>
+
+     <!-- App js -->
+     <script src=  "{% static './js/app.js'%}"></script>
+
+

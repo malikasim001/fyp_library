@@ -1,0 +1,179 @@
+{% extends 'base.html' %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+        <title>{% block title %}
+            Current FYP
+          {% endblock title %}</title>
+        {% load static %}
+        <meta content="Admin Dashboard" name="description" />
+        <meta content="Themesbrand" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        
+        <!-- App Icons -->
+        <link rel="shortcut icon" href="{% static './images/custlogo_3.png'%}">
+
+        <!-- DataTables -->
+        <link href="{% static './plugins/datatables/dataTables.bootstrap4.min.css'%}" rel="stylesheet" type="text/css" />
+        <link href="{% static './plugins/datatables/buttons.bootstrap4.min.css'%}" rel="stylesheet" type="text/css" />
+        <!-- Responsive datatable examples -->
+        <link href="{%static './plugins/datatables/buttons.bootstrap4.min.css'%}" rel="stylesheet" type="text/css" />
+        <!-- Basic Css files -->
+        <link href="{% static './css/bootstrap.min.css'%}" rel="stylesheet" type="text/css">
+        <link href="{% static './css/icons.css'%}" rel="stylesheet" type="text/css">
+        <link href="{% static './css/style.css'%}" rel="stylesheet" type="text/css">
+        <li class="mt-3 nav-active">
+            <a href="/index" class="waves-effect"><i class="mdi mdi-folder-multiple"></i><span> Current FYP </span></a>
+        </li>
+        
+
+    </head>
+    {% block body %}
+    <h3 class="page-title">Current Final Year Projects</h3>
+    <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Project Title</th>
+                <th>Supervisior</th>
+                <th>Team</th>
+                <th>Year</th>
+                <th>Department</th>
+                <th>Report</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+
+        <tbody>
+            <tr>
+                <td>FYP Records and Plagiarism detector</td>
+                <td>Dr Mariam</td>
+                <td>Mahnoor,Asim,Kamran</td>
+                <td>2022</td>
+                <td>CS</td>
+                <td class="text-center">
+                    <a href="#" target="_blank" class="pink-color font-20">
+                        <span class="mdi mdi-file-outline "></span>
+                    </a>
+                </td>
+                <td><div class="btn-group" role="group">
+                    <button id="btnGroupVerticalDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="mdi mdi-settings"></div>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop1">
+                        <a class="dropdown-item" href="#">View</a>
+                        <a class="dropdown-item" href="#">Update</a>
+                        <a class="dropdown-item" href="#">Delete</a>
+                       
+                    </div>
+                </div></td>
+            </tr>
+            <td>Car Parking System</td>
+            <td>Omaid Ghayur</td>
+            <td>ALi,Zahid,Umair</td>
+            <td>2022</td>
+            <td>CS</td>
+            <td class="text-center">
+                <a href="#" target="_blank" class="pink-color font-20">
+                    <span class="mdi mdi-file-outline "></span>
+                </a>
+            </td>
+            <td><div class="btn-group" role="group">
+                <button id="btnGroupVerticalDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="mdi mdi-settings"></div>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop1">
+                    <a class="dropdown-item" href="#">View</a>
+                    <a class="dropdown-item" href="#">Update</a>
+                    <a class="dropdown-item" href="#">Delete</a>
+                   
+                </div>
+            </div></td>
+        </tr>
+        
+        <tr>
+            <td>Smart Home</td>
+            <td>Fahad Majeed</td>
+            <td>Arslan,Asim,Umair</td>
+            <td>2022</td>
+            <td>CS</td>
+            <td class="text-center">
+                <a href="#" target="_blank" class="pink-color font-20">
+                    <span class="mdi mdi-file-outline "></span>
+                </a>
+            </td>
+            <td><div class="btn-group" role="group">
+                <button id="btnGroupVerticalDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="mdi mdi-settings"></div>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop1">
+                    <a class="dropdown-item" href="#">View</a>
+                    <a class="dropdown-item" href="#">Update</a>
+                    <a class="dropdown-item" href="#">Delete</a>
+                  
+                </div>
+            </div></td>
+        </tr>
+        <td>Vote Casting</td>
+        <td>Dr Qamar Mahmood</td>
+        <td>Mohsin,Ayesha,Ansa</td>
+        <td>2022</td>
+        <td>CS</td>
+        <td class="text-center">
+            <a href="#" target="_blank" class="pink-color font-20">
+                <span class="mdi mdi-file-outline "></span>
+            </a>
+        </td>
+        <td><div class="btn-group" role="group">
+            <button id="btnGroupVerticalDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="mdi mdi-settings"></div>
+              </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop1">
+                <a class="dropdown-item" href="#">View</a>
+                <a class="dropdown-item" href="#">Update</a>
+                <a class="dropdown-item" href="#">Delete</a>
+                
+            </div>
+        </div></td>
+    </tr>
+    
+        </tbody>
+    </table>
+      
+    {% endblock body %}
+     <!-- jQuery  -->
+     <script src="{%static './js/jquery.min.js'%}"></script>
+     <script src="{%static './js/bootstrap.bundle.min.js'%}"></script>
+     <script src="{%static './js/modernizr.min.js'%}"></script>
+     <script src="{%static './js/jquery.slimscroll.js'%}"></script>
+     <script src="{%static './js/waves.js'%}"></script>
+     <script src="{%static './js/jquery.nicescroll.js'%}"></script>
+     <script src="{%static './js/jquery.scrollTo.min.js'%}"></script>
+ 
+
+     <!-- Required datatable js -->
+     <script src= "{% static './plugins/datatables/jquery.dataTables.min.js'%}"></script>
+     <script src="{% static './plugins/datatables/dataTables.bootstrap4.min.js'%}"></script>
+     <!-- Buttons examples -->
+     <script src="{% static './plugins/datatables/dataTables.buttons.min.js'%}"></script>
+     <script src="{% static './plugins/datatables/buttons.bootstrap4.min.js'%}"></script>
+     <script src="{% static './plugins/datatables/jszip.min.js'%}"></script>
+     
+     <script src= "{% static './plugins/datatables/pdfmake.min.js'%}"></script>
+     <script src="{% static './plugins/datatables/vfs_fonts.js'%}"></script>
+     <script src=  "{% static './plugins/datatables/buttons.html5.min.js'%}"></script>
+     <script src=  "{% static './plugins/datatables/buttons.print.min.js'%}"></script>
+     <script src=  "{% static './plugins/datatables/buttons.colVis.min.js'%}"></script>
+     <!-- Responsive examples -->
+     <script src=  "{% static './plugins/datatables/dataTables.responsive.min.js'%}"></script>
+     <script src=  "{% static './plugins/datatables/responsive.bootstrap4.min.js'%}"></script>
+
+     <!-- Datatable init js -->
+     <script src=  "{% static './pages/datatables.init.js'%}"></script>
+
+     <!-- App js -->
+     <script src=  "{% static './js/app.js'%}"></script>
+</html>
